@@ -2,21 +2,7 @@
 
 namespace App\Objects;
 
-class BaseObject
+abstract class BaseObject
 {
-    protected int $weight;
-
-    public function __construct(protected array $data)
-    {
-
-    }
-
-    abstract public function getWeight(): int
-
-    protected function setProperties(): void
-    {
-        matc (in_array($this->data)) {
-
-        }
-    }
+    abstract public function create(array $data): BaseObject;
 }

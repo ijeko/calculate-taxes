@@ -7,12 +7,13 @@ use App\Services\Enums\DeliveryServices;
 use Illuminate\Foundation\Http\FormRequest;
 use phpDocumentor\Reflection\Types\AggregatedType;
 
+
 class DeliveryCostRequest extends FormRequest
 {
     private const DELIVERY_SERVICES = [
         'dhl',
         'russian_post',
-    ]
+    ];
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -20,15 +21,18 @@ class DeliveryCostRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
-    public function getService(): DeliveryService
+    public function getService(): ?DeliveryService
     {
         if (in_array($this->get('service'), self::DELIVERY_SERVICES)) {
-            return DeliveryServices::from($this->get('service'));
+            return DeliveryServices::from($this->get('service'))->getService();
         }
+
+        return null;
     }
+
     /**
      * Get the validation rules that apply to the request.
      */

@@ -1,5 +1,7 @@
 FROM php:8.1-fpm-alpine3.15
 
+
+
 # Add docker-php-extension-installer script
 ADD https://github.com/mlocati/docker-php-extension-installer/releases/latest/download/install-php-extensions /usr/local/bin/
 
@@ -16,13 +18,8 @@ RUN apk add --no-cache \
     libc-dev \
     libzip-dev \
     make \
-    nodejs \
-    npm \
     oniguruma-dev \
-    yarn \
     openssh-client \
-    postgresql-libs \
-    jpegoptim optipng pngquant gifsicle \
     rsync \
     shadow \
     sqlite-dev \
@@ -39,7 +36,7 @@ RUN chmod +x /usr/local/bin/install-php-extensions && \
     exif \
     gd \
     intl \
-    pdo_pgsql \
+    pdo_mysql \
     pdo_sqlite \
     pcntl \
     zip
@@ -59,8 +56,6 @@ RUN usermod -u 1000 www-data && groupmod -g 1000 www-data
 
 # Setup working directory
 WORKDIR /var/www
-
-USER 1000:1000
 
 EXPOSE 9000
 
