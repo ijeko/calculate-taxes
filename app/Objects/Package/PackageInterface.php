@@ -4,5 +4,10 @@ namespace App\Objects\Package;
 
 interface PackageInterface
 {
-    public function getWeight(): int;
+    public function __construct(array $data);
+
+    /**
+     * Метод возвращает вес посылки
+     */
+    public function getWeight(): float;
 }

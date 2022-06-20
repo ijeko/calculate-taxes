@@ -1,5 +1,4 @@
 # Start project
-setup: build up composer-install migrate-fresh
 
 build:
 	docker-compose build
@@ -12,6 +11,3 @@ composer-install:
 
 down:
 	docker-compose down
-
-migrate-fresh:
-	docker-compose exec app php artisan migrate:fresh --seed

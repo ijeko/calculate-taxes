@@ -3,7 +3,7 @@
 docker-compose build
 docker-compose up -d
 
-Api endpoint: GET api/delivery/cost (application/json)
+Api endpoint метод GET (application/json): api/delivery/cost 
 
 Пример запроса:
 
@@ -12,4 +12,5 @@ Api endpoint: GET api/delivery/cost (application/json)
     "weight": 1
 }
 
-доступные сервисы russian_post , dhl
+доступные сервисы (string): russian_post , dhl
+доступные характеристики посылки (float): weight
