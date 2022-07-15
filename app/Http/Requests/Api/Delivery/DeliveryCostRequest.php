@@ -6,7 +6,7 @@ use Illuminate\Foundation\Http\FormRequest;
 
 /**
  * @property string $service
- * @property int $weight
+ * @property array $package
  */
 class DeliveryCostRequest extends FormRequest
 {
@@ -27,7 +27,8 @@ class DeliveryCostRequest extends FormRequest
     {
         return [
             'service' => ['required', 'string'],
-            'weight' => ['required', 'numeric', 'gt:0'],
+            'package' => ['required','array'],
+            'package.weight' => ['required', 'numeric', 'gt:0'],
         ];
     }
 }

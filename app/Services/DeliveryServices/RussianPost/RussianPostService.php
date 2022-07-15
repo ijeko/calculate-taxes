@@ -12,27 +12,22 @@ class RussianPostService implements DeliveryService
     private int $above = 1000;
     private string $name = 'Russian Post';
 
-    public function __construct(protected PackageInterface $package)
+    public function __construct()
     {
     }
 
-    public function getCostByWeight(): float
+    public function getCostByWeight(PackageInterface $package): float
     {
-        if ($this->package->getWeight() <= $this->limit) {
-            return $this->package->getWeight() * $this->below;
+        if ($package->getWeight() <= $this->limit) {
+            return $package->getWeight() * $this->below;
         } else {
             return $this->limit * $this->below +
-                ($this->package->getWeight() - $this->limit) * $this->above;
+                ($package->getWeight() - $this->limit) * $this->above;
         }
     }
 
     public function getName(): string
     {
         return $this->name;
-    }
-
-    public function getPackage(): PackageInterface
-    {
-        return $this->package;
     }
 }
