@@ -6,20 +6,15 @@ use App\Objects\Package\PackageInterface;
 
 interface DeliveryService
 {
-    public function __construct(PackageInterface $package);
+    public function __construct();
 
     /**
      * Метод возвращает название службы доставки
      */
-    public function getCostByWeight(): float;
+    public function getCostByWeight(PackageInterface $package): float;
 
     /**
      * Метод возвращает название службы доставки
      */
     public function getName(): string;
-
-    /**
-     * Метод возвращает экземпляр посылки
-     */
-    public function  getPackage(): PackageInterface;
 }

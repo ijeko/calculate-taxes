@@ -10,22 +10,17 @@ class DhlService implements DeliveryService
     private int $price = 100;
     private string $name = 'DHL';
 
-    public function __construct(protected PackageInterface $package)
+    public function __construct()
     {
     }
 
-    public function getCostByWeight(): float
+    public function getCostByWeight(PackageInterface $package): float
     {
-       return $this->price * $this->package->getWeight();
+       return $this->price * $package->getWeight();
     }
 
     public function getName(): string
     {
         return $this->name;
-    }
-
-    public function getPackage(): PackageInterface
-    {
-        return $this->package;
     }
 }
